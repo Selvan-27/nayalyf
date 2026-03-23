@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>YouTube Autoplay (No Controls)</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    #player {
+      margin: 20px auto;
+      width: 640px;
+      height: 360px;
+    }
+    #nextBtn {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: not-allowed;
+      opacity: 0.5;
+      margin-top: 10px;
+    }
+    #nextBtn.active {
+      cursor: pointer;
+      opacity: 1;
+    }
+    #duration {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>YouTube (No Controls)</h2>
+
+  <div id="player"></div>
+  <div id="duration">Duration: Loading...</div>
+  <button id="nextBtn" disabled>Next Video</button>
+
+  <script>
+    let tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    document.body.appendChild(tag);
+
+    let player;
+    let currentIndex = 0;
+    const videos = [
+      { id: 'jlmT4apm1oI', title: 'Video 1' },
+      { id: '-QnEDRpTMm0', title: 'Video 2' },
+      { id: 'fzH9reWrAWI', title: 'Video 3' }
+    ];
+
+    const nextBtn = document.getElementById("nextBtn");
+    const durationDisplay = document.getElementById("duration");
+
+    function onYouTubeIframeAPIReady() {
+      loadVideo(currentIndex);
+    }
+
+    function loadVideo(index) {
+      nextBtn.disabled = true;
+      nextBtn.classList.remove('active');
+
+      player = new YT.Player('player', {
+        height: '360',
+        width: '640',
+        videoId: videos[index].id,
+        events: {
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange
+        },
+        playerVars: {
+          autoplay: 1,
+          controls: 0,         // 🔒 hide controls
+          modestbranding: 1,
+          rel: 0,
+          showinfo: 0,
+          fs: 0,
+          disablekb: 1,
+          iv_load_policy: 3
+        }
+      });
+    }
+
+    function onPlayerReady(event) {
+      event.target.playVideo();
+      const interval = setInterval(() => {
+        const dur = player.getDuration();
+        if (dur > 0) {
+          durationDisplay.textContent = `Duration: ${Math.round(dur)}s`;
+          clearInterval(interval);
+        }
+      }, 500);
+    }
+
+    function onPlayerStateChange(event) {
+      if (event.data === YT.PlayerState.ENDED) {
+        nextBtn.disabled = false;
+        nextBtn.classList.add('active');
+      }
+    }
+
+    nextBtn.addEventListener('click', () => {
+      if (currentIndex < videos.length - 1) {
+        currentIndex++;
+        player.destroy(); // remove current player before loading new
+        loadVideo(currentIndex);
+      } else {
+        alert('All videos played!');
+        nextBtn.disabled = true;
+        nextBtn.classList.remove('active');
+      }
+    });
+  </script>
+
+</body>
+</html>
+
+ 
