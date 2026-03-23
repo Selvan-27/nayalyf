@@ -70,3 +70,6 @@ package-lock.json
 *.swo
 *~
 .php_cs.cache
+
+.env.example
+.env
