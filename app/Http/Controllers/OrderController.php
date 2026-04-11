@@ -509,14 +509,14 @@ foreach ($orderItems as $orderItem) {
 }
 
                      //-------------------Start sms
-             $message = urlencode('Thank you for your purchase from UNIQCONNECT WC! Order ID: '.$oo.' Product: {#var#} Amount: ₹'.$tt.' Need help? Contact us at 000 ');
+            //  $message = urlencode('Thank you for your purchase from UNIQCONNECT WC! Order ID: '.$oo.' Product: {#var#} Amount: ₹'.$tt.' Need help? Contact us at 000 ');
 
             
-                 $url = "http://site.ping4sms.com/api/smsapi?key=d2c26b4873e847d632ca95f21abfafea&route=2&sender=UNIQWC&templateid=1707174558071253063&number={$mobile}&sms={$message}";
+            //      $url = "http://site.ping4sms.com/api/smsapi?key=d2c26b4873e847d632ca95f21abfafea&route=2&sender=UNIQWC&templateid=1707174558071253063&number={$mobile}&sms={$message}";
 
-                        $response = Http::get($url);
-                        $responseBody = $response->body();
-                         if ($response->successful()) {
+            //             $response = Http::get($url);
+            //             $responseBody = $response->body();
+                        //  if ($response->successful()) {
             
                          }
             //------------------End sms

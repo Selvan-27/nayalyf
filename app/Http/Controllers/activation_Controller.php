@@ -79,23 +79,7 @@ class activation_Controller extends Controller
            
     if($transaction->save()){
         
-        //     //-------------------------send Mail-------------------
-        //           $email = 'rytecn1@gmail.com';
-                   
-        //                         $name =$login_id;
-        //     $data = [
-        //      'name' =>$login_id,
-        //     'otpcode' => $login_id, 
-        //     'email' => 'rytecn1@gmail.com' 
-        // ];
-   
-        //     Mail::send('mail.OTP', $data, function($message) use ($email,$name) {
-        //         $message->to($email, $name)
-        //                 ->subject('withdraw Request for RYTE Crypto')
-        //                 ->from('rytecrypto@gmail.com', 'RYTE Crypto');
-        //                 // ->attach('https://t4.ftcdn.net/jpg/02/52/93/81/360_F_252938192_JQQL8VoqyQVwVB98oRnZl83epseTVaHe.jpg');
-        //     });
-      
+
          //-------------------------send Mail-------------------
              return back()->with('success', 'Activation Request created successful.');
     } else {

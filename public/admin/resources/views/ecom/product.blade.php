@@ -128,7 +128,7 @@
 
                                     <div class="img-wrapper">
                                         <div class="front">
-                                            <a href="javascript:void(0)" class="bg-size" style="background-image: url(&quot;https://admin.uniqconnectwc.com/storage/app/public/{{$item->image_url}}&quot;); background-size: cover; background-position: center center; display: block;"><img   src="https://admin.uniqconnectwc.com/storage/app/public/{{$item->image_url}}" alt="{{$item->image_url}}" class="img-fluid blur-up lazyload bg-img" alt="" style="display: none;"></a>
+                                            <a href="javascript:void(0)" class="bg-size" style="background-image: url(&quot;https://admin.nayalyf.com/storage/app/public/{{$item->image_url}}&quot;); background-size: cover; background-position: center center; display: block;"><img   src="https://admin.nayalyf.com/storage/app/public/{{$item->image_url}}" alt="{{$item->image_url}}" class="img-fluid blur-up lazyload bg-img" alt="" style="display: none;"></a>
                                             <div class="product-hover">
                                                 <ul>
                                                     <li><a  href="/products/{{$item->id}}/edit" class="btn"><i class="ti-pencil-alt"></i></a></li>

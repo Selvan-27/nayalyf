@@ -150,7 +150,7 @@
                     <td>{{ $product->id }}</td>
                     <td>
                     @if($product->image_url)
-                    <img src="https://admin.uniqconnectwc.com/storage/app/public/{{$product->image_url }}" alt="Image" width="50">
+                    <img src="https://admin.nayalyf.com/storage/app/public/{{$product->image_url }}" alt="Image" width="50">
                     @else
                     N/A
                     @endif
