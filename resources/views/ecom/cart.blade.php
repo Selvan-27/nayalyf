@@ -10,7 +10,7 @@
                 <a href="#sidebar" class="sidebar-btn" data-bs-toggle="offcanvas">
                     <i class="iconsax" data-icon="text-align-left"></i>
                 </a>
-                <h3>UNIQ SHOP</h3>
+                <h3>Nayalyf SHOP</h3>
                 
             </div>
         </div>
@@ -43,7 +43,7 @@
               data-price="{{$item->price}}">
                       
             <a href="product-details.html" class="product-img">
-                <img src="https://admin.uniqconnectwc.com/storage/app/public/{{$item->image_url}}" class="img-fluid" alt="">
+                <img src="https://admin.nayalyf.com/storage/app/public/{{$item->image_url}}" class="img-fluid" alt="">
             </a>
             <div class="product-content">
                 <h6 class="content-color">{{$item->category}}</h6>
@@ -91,7 +91,7 @@
               data-price="{{$offer_price}}">
                       
             <a href="product-details.html" class="product-img">
-                <img src="https://admin.uniqconnectwc.com/storage/app/public/{{$item->image_url}}" class="img-fluid" alt="">
+                <img src="https://admin.nayalyf.com/storage/app/public/{{$item->image_url}}" class="img-fluid" alt="">
             </a>
             <div class="product-content">
                 <h6 class="content-color">{{$item->category}}</h6>
@@ -414,7 +414,7 @@ const cart = JSON.parse(localStorage.getItem("Ecart")) || [];
       return;
     }
     
-     window.location.assign("https://uniqconnectwc.com/Checkout")
+     window.location.assign("https://nayalyf.com/Checkout")
 }
 </script>
 
