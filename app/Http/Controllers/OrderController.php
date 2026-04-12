@@ -242,7 +242,8 @@ class OrderController extends Controller
       return view('ecom.ordertrack', compact('orders','orders_items','orders_from_seconds'));
     }
     
-        public function placeOrder(Request $request){
+public function placeOrder(Request $request)
+{
     //          $request->validate([
     //     'cart' => 'required|array',
     //     'total' => 'required|numeric',
@@ -263,11 +264,6 @@ class OrderController extends Controller
     $totalWallet = $request->input('totalWallet');
 
     $orderId = 'ORD-' . time() . rand(100, 999);
-    
-//      return response()->json([
-//     'success' => false,
-//     'redirect_url' => $orderId
-// ]);
 
 
     $redirectUrl = 'https://uniqconnectwc.com/checkPhonePeStatus?transactionId='.$orderId; // Define this route

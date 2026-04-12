@@ -108,6 +108,14 @@ Route::controller(PaymentController::class)->group(function(){
   
 });
 
+Route::prefix('phonepe')->name('phonepe.')->group(function () {
+    Route::post('/pay',             [PhonePeController::class, 'initiatePayment'])->name('pay');
+    Route::get('/callback/{order}', [PhonePeController::class, 'callback'])->name('callback');
+    Route::post('/webhook',         [PhonePeController::class, 'webhook'])->name('webhook');
+    Route::post('/status',          [PhonePeController::class, 'checkStatus'])->name('status');
+    Route::post('/refund',          [PhonePeController::class, 'refund'])->name('refund');
+});
+
 Route::controller(addressController::class)->group(function(){
    
     Route::get('/Address', 'address');
@@ -255,7 +263,7 @@ Route::controller(OrderController::class)->group(function(){
     
     Route::get('/Checkout', 'checkout');
       
-    Route::post('/place-order','placeOrder');
+    // Route::post('/place-order','placeOrder');
     
     Route::post('/Upgrade_account','Upgrade_account');
     Route::get('/checkUpgradeStatus','checkUpgradeStatus');

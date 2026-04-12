@@ -480,7 +480,7 @@ const orderData = {
   address_id: selected
 };
 
-fetch("/place-order", {
+fetch("/pay", {
   method: "POST",
   headers: {
     "Content-Type": "application/json",
