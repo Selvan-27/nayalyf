@@ -38,7 +38,7 @@ class HomeController extends Controller
         ->select('ecom_products.*', 'cutoff_dates.from_date', 'cutoff_dates.to_date')
         ->first();
 
-    $products_4 = Product::join('cutoff_dates', function($join) {
+        $products_4 = Product::join('cutoff_dates', function($join) {
             $join->whereDate('cutoff_dates.from_date', '<=', now())
                  ->whereDate('cutoff_dates.to_date', '>=', now())
          ->where('cutoff_dates.type', '=', 'cutoff');
@@ -51,12 +51,14 @@ class HomeController extends Controller
         
         $categories = Category::where('id',14)->get();
 
-            return view('home', compact('products','business_list','categories','slider','products_3','products_4'));
-      //}else{
-          
-        //    return back()->with('error', 'Inactive ID.');
-               
-        //}
+        $welcome_kit=Orders::where('user_id',Auth::user()->memberid)->first();
+
+        if($welcome_kit->address_id==0){
+            return redirect('address');            
+        }else{
+            return view('home', compact('products','business_list','categories','slider','products_3','products_4','welcome_kit'));
+        }
+
         
     }
     
