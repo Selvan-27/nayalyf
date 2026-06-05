@@ -73,3 +73,4 @@ package-lock.json
 
 .env.example
 .env
+config/database.php
