@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\User;
 use App\Models\address;
+use App\Models\Orders;
 use App\Models\withdraw_history;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
@@ -19,6 +20,36 @@ use App\Services\WalletService;
 
 class addressController extends Controller
 {
+
+    public function address_update_page(){
+        return view('ecom.address-update-page');
+    }
+
+    public function update_address_kit(Request $request){
+        
+          $address = new address();
+            $address->user_id = Auth::user()->memberid; // Assuming you want to link to the logged-in user
+            $address->full_name = $request->full_name;
+            $address->mobile_no = $request->mobile_no;
+            $address->pincode = $request->inputcode;
+            $address->street_address = $request->inputaddress;
+            $address->city = $request->inputcity;
+            $address->state = $request->memberState;
+            $address->district = $request->memberdistrict;
+            $address->save();
+        
+             $welcome_kit=Orders::where('user_id',Auth::user()->memberid)->first();
+
+        if($welcome_kit->address_id==0){
+          
+            $update=Orders::where('user_id',Auth::user()->memberid)->update([
+                 'address_id' => $address->id,
+            ]);
+           return redirect('home')->with('success', 'Address added successfully!');
+
+        }
+    }
+
         public function address(){
              $user_id = Auth::user()->memberid;
               $data = address::where('user_id',$user_id)->get();

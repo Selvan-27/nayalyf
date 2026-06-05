@@ -54,7 +54,7 @@ class HomeController extends Controller
         $welcome_kit=Orders::where('user_id',Auth::user()->memberid)->first();
 
         if($welcome_kit->address_id==0){
-            return redirect('address');            
+            return redirect('address-update-page');            
         }else{
             return view('home', compact('products','business_list','categories','slider','products_3','products_4','welcome_kit'));
         }

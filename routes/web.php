@@ -118,6 +118,9 @@ Route::prefix('phonepe')->name('phonepe.')->group(function () {
 
 Route::controller(addressController::class)->group(function(){
    
+    Route::get('/address-update-page', 'address_update_page');
+    Route::post('/update-address-kit','update_address_kit')->name('update-address-kit');
+
     Route::get('/Address', 'address');
     Route::get('/edit-address/{$id}', 'edit-address/{$id}')->name('edit-address');
     Route::post('/add-address', 'add_address')->name('add-address');
